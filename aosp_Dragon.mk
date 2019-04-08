@@ -25,6 +25,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Inherit from Dragon device
 $(call inherit-product, device/nokia/Dragon/device.mk)
 
+# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 # Google Camera ( Pixel 3XL)
 $(call inherit-product, vendor/nokia/Camera/config.mk)
 
