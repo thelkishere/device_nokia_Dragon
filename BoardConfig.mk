@@ -247,14 +247,13 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
-# Enable dex pre-opt to speed up initial boot
+# Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+    ifneq ($(TARGET_BUILD_VARIANT),eng)
+        ifeq ($(WITH_DEXPREOPT),)
+            WITH_DEXPREOPT := true
+        endif
     endif
-  endif
 endif
 
 # inherit from the proprietary version
