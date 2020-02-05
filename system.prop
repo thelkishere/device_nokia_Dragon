@@ -1,0 +1,12 @@
+# IMS
+persist.dbg.ims_volte_enable=1 
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+
+# Maintainer
+ro.maintainer=G Raghu Varma
+
+# Over the air
+ro.android.build.version=android-9.0
+ro.android.device=Dragon
+ro.android.releasetype=UNOFFICIAL
