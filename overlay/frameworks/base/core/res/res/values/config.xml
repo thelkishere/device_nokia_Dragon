@@ -45,6 +45,11 @@
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
+    <!-- Enables or disables haptic effect when the text insertion/selection handle is moved
+         manually by the user. Off by default, since the expected haptic feedback may not be
+         available on some devices. -->
+    <bool name="config_enableHapticTextHandle">true</bool>
+
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
@@ -329,13 +334,15 @@
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm64/boot-framework.oat"</item>
-        <item>"/system/framework/boot-framework.vdex"</item>
+        <item>"/system/framework/framework.jar"</item>
         <item>"/system/framework/oat/arm64/services.odex"</item>
-        <item>"/system/framework/oat/arm64/services.vdex"</item>
+        <item>"/system/framework/services.jar"</item>
         <item>"/system/framework/arm64/boot.oat"</item>
-        <item>"/system/framework/boot.vdex"</item>
         <item>"/system/framework/arm64/boot-core-libart.oat"</item>
         <item>"/system/framework/boot-core-libart.vdex"</item>
+        <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
+        <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>/system/lib64/libRScpp.so</item>
         <item>/system/lib64/libRS.so</item>
         <item>/system/lib64/libRS_internal.so</item>
@@ -350,6 +357,17 @@
 
     <!-- Should the pinner service pin the Home application? -->
     <bool name="config_pinnerHomeApp">true</bool>
+
+    <!-- List of files pinned by the Pinner Service with the apex boot image -->
+    <string-array translatable="false" name="config_apexBootImagePinnerServiceFiles">
+        <item>"/system/framework/framework.jar"</item>
+        <item>"/system/framework/services.jar"</item>
+        <item>"/system/framework/arm64/apex.oat"</item>
+        <item>"/system/framework/arm64/apex-core-libart.oat"</item>
+        <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
+        <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
+    </string-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">1</integer>
@@ -502,7 +520,7 @@
          * The remote submix module "audio.r_submix.default" must be installed on the device.
          * The device must be provisioned with HDCP keys (for protected content).
     -->
-    <bool name="config_enableWifiDisplay">true</bool>
+    <!--bool name="config_enableWifiDisplay">true</bool-->
 
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
@@ -555,18 +573,22 @@
          will not debounce light sensor readings -->
     <integer name="config_lightSensorWarmupTime">200</integer>
 
-    <!-- Whether device has screen with higher aspect ratio -->
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+    <!-- True if the firmware supports Wi-Fi link probing -->
+    <bool name="config_wifi_link_probing_supported">true</bool>
 
     <!-- Whether device ignores the RSSNR signal implementation -->
     <bool name="config_ignoreRssnrSignalLevel">true</bool>
-
-    <!-- Whether device needs to wait for Qualcomm MPCTL service to start
-         before setting power profiles on boot. -->
-    <bool name="config_waitForMpctlOnBoot">true</bool>
 	
     <!-- Whether device has a physical display cutout -->
     <bool name="config_physicalDisplayCutout">true</bool>
+	
+    <!-- Control whether the always on display mode is available. This should only be enabled on
+         devices where the display has be tuned to be power efficient in DOZE and/or DOZE_SUSPEND
+         states. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>		
 
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
@@ -590,7 +612,7 @@
     <dimen name="status_bar_height_landscape">24.0dp</dimen>
 
     <!-- The list of vendor package signatures that should also be considered
-    platform signatures, specifically for use on devices with a vendor partition. -->
+         platform signatures, specifically for use on devices with a vendor partition. -->
     <string-array name="config_vendorPlatformSignatures">
         <item>308203973082027fa003020102020900903e0e66e35abd18300d06092a864886f70d01010505003063310b30090603550406130246493111300f06035504080c0848656c73696e6b693111300f06035504070c0848656c73696e6b69310c300a060355040a0c03484d443110300e060355040b0c07416e64726f6964310e300c06035504030c054e6f6b6961301e170d3136303930383038303735395a170d3434303132353038303735395a3063310b30090603550406130246493111300f06035504080c0848656c73696e6b693111300f06035504070c0848656c73696e6b69310c300a060355040a0c03484d443110300e060355040b0c07416e64726f6964310e300c06035504030c054e6f6b696130820120300d06092a864886f70d01010105000382010d00308201080282010100ada75053da22b920561c2ca4dd22d6faa4fe86fc026c624d0233983ddf2f720669fdd7d920cb684993c22e1a28e0f95fc4660de858063802c3a19e5727bfe3feb489613c7b1f6f07afb23d9cab375abb4d349b4dd081ea88e7d79f9281729e799af8be98710f33f38702ea6214127cbdbf8f527ced1dc6ea61e9a7b0927fbeab434075d8fe79b6f083e95e2e2963d2d36f7e87dd96ba674a145e6b2dc48a30d2c7caa2f604b311661bc076f7c94865bafef6e80380911d6e46de168ba6559a419bfd9086ecc46e883c579ebeddfd220474afea2743bec3fc7afca03123adf6e3ff480b1dd9af44326408bc6a6afbfb7111104ec73cd7b84291610d1f9b2deb67020103a350304e301d0603551d0e04160414b355adb77d331f34c1b96c2405935f156d126325301f0603551d23041830168014b355adb77d331f34c1b96c2405935f156d126325300c0603551d13040530030101ff300d06092a864886f70d01010505000382010100787fa3e0254fb62291d94ba9aca65656f7ae41f3de62fff3152e3ffa7416702f94f3854298b7d3325d2842abb0867ee43dda85815ec540c1e7ec5a3875b55d24d1e587cd9ead4b1fd4fc069759c63ab3c7e63e56bb7d98fe685c01d7b0ff30a5358048da77f4363d5c9be942c75cc134bf1a55aa1378a61d80c8988566e0dd58e5792d03cd1c1f85502078a102a98e9c3c7e29f93c91cea7b9cd7872de68d7e8da87d20965c38dd594858fa4420963b27fd360ba8577b02385b0249173c745db0f22a1ef96d86180611fae5e2e4e255bdfd814e35134173c60c624244f692928d709c75737970a09fc334c6f746620fa86c1240958149cbcc5e980cf225eff42</item>
     </string-array>

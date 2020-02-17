@@ -19,6 +19,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 # Inherit from Dragon device
 $(call inherit-product, device/nokia/Dragon/device.mk)
 
@@ -73,8 +76,8 @@ PRODUCT_GMS_CLIENTID_BASE := android-nokia
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="Dragon" \
     PRODUCT_NAME="Dragon" \
-    PRIVATE_BUILD_DESC="Dragon_00WW-user 9 PPR1.180610.011 00WW_3_54H release-keys"
+    PRIVATE_BUILD_DESC="B2N_00WW_FIH-user 10 QKQ1.190828.002 00WW_4_10C release-keys"
 
-BUILD_FINGERPRINT := Nokia/Dragon_00WW/DRG_sprout:9/PPR1.180610.011/00WW_3_54H:user/release-keys
+BUILD_FINGERPRINT := Nokia/Dragon_00WW/DRG_sprout:10/QKQ1.190828.002/00WW_4_10C:user/release-keys
 
 TARGET_VENDOR := nokia
