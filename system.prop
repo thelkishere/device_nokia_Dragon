@@ -431,4 +431,4 @@ ro.maintainer=G Raghu Varma
 # Over the air
 ro.android.build.version=android-10.0
 ro.android.device=Dragon
-ro.android.releasetype=UNOFFICIAL
+ro.android.ota.version_code=ten 
