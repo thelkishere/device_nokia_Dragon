@@ -293,8 +293,11 @@ PRODUCT_PACKAGES += \
 # Wi-Fi Display
 PRODUCT_BOOT_JARS += \
     WfdCommon
-    
+
 # Over_the_air
 PRODUCT_PACKAGES += \
     Os_Updates
 
+# Gallery
+PRODUCT_PACKAGES += \
+    Gallery2
