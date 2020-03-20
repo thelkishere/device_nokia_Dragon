@@ -1,0 +1,32 @@
+[
+  {
+    "repository": "RaghuVarma331/android_kernel_nokia_sdm660",
+    "target_path": "kernel/nokia/sdm660",
+    "branch": "ten-gcc",
+    "remote": "github"
+  },
+  {
+    "repository" : "RaghuVarma331/vendor_nokia",
+    "target_path": "vendor/nokia",
+    "branch": "ten",
+    "remote": "gitlab"
+  },
+  {
+    "repository": "RaghuVarma331/vendor_nokia_Camera",
+    "target_path": "vendor/nokia/Camera",
+    "branch": "ten",
+    "remote": "github"
+  },
+  {
+    "repository" : "RaghuVarma331/vendor_gapps",
+    "target_path": "vendor/gapps",
+    "branch": "ten",
+    "remote": "gitlab"
+  },
+  {
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "branch": "lineage-17.1",
+    "remote": "github"
+  }
+]
