@@ -25,6 +25,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Inherit from Dragon device
 $(call inherit-product, device/nokia/Dragon/device.mk)
 
+# Google Camera ( Pixel 3XL)
+$(call inherit-product, vendor/nokia/Camera/config.mk)
+
 # Inherit some common aosp stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
