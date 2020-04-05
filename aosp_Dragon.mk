@@ -32,8 +32,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/system
 $(call inherit-product, build/target/product/verity.mk)
 
-# Google Camera ( Pixel 3XL)
-$(call inherit-product, vendor/nokia/Camera/config.mk)
+# Nokia 7.2
+$(call inherit-product, vendor/nokia/HMDCamera/config.mk)
 
 # Inherit some common aosp stuff.
 TARGET_BOOT_ANIMATION_RES := 1080

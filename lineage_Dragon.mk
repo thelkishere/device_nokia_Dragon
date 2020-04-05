@@ -32,8 +32,8 @@ $(call inherit-product, build/target/product/verity.mk)
 # Inherit from Dragon device
 $(call inherit-product, device/nokia/Dragon/device.mk)
 
-# Google Camera ( Pixel 3XL)
-$(call inherit-product, vendor/nokia/Camera/config.mk)
+# Nokia 7.2
+$(call inherit-product, vendor/nokia/HMDCamera/config.mk)
 
 # Inherit some common aosp stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
