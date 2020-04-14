@@ -193,7 +193,6 @@ TARGET_COPY_OUT_PRODUCT := system/product
 
 # vendor
 TARGET_COPY_OUT_VENDOR := vendor
-BOARD_PREBUILT_VENDORIMAGE := vendor/nokia/Dragon/proprietary/vendor.img
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
