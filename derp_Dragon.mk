@@ -39,7 +39,6 @@ $(call inherit-product, vendor/aosip/config/common_full_phone.mk)
 # Google Apps
 TARGET_GAPPS_ARCH := arm64
 IS_PHONE := true
-$(call inherit-product, vendor/gapps/config.mk)
 
 # A/B updater
 AB_OTA_UPDATER := true
