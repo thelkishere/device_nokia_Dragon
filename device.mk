@@ -258,9 +258,6 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
@@ -304,5 +301,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Gallery2
 
-# Google Camera ( Pixel 3XL)
-$(call inherit-product, vendor/nokia/Camera/config.mk)

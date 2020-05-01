@@ -1,4 +1,9 @@
 type ir_dev_file, file_type;
+type firmware_file, file_type;
+type bt_firmware_file, file_type;
+type camera_prop, property_type; 
+type sysfs_graphics, fs_type, sysfs_type;
+type vendor_mpctl_prop, property_type;
 
 allow ueventd ir_dev_file:chr_file { create setattr };
 

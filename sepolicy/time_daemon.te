@@ -1,1 +1,1 @@
-allow time_daemon self:capability { setuid setgid sys_time };
+# allow time_daemon self:capability { setuid setgid sys_time };

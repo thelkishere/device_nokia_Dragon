@@ -35,7 +35,7 @@ $(call inherit-product, build/target/product/verity.mk)
 # Inherit some common aosp stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
 
 # A/B updater
 AB_OTA_UPDATER := true
@@ -72,7 +72,7 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     libz
 
 # Device identifiers
-PRODUCT_NAME := aosp_Dragon
+PRODUCT_NAME := pa_Dragon
 PRODUCT_BRAND := Nokia
 PRODUCT_DEVICE := Dragon
 PRODUCT_MANUFACTURER := HMD Global
